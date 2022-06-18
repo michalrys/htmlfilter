@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+    <meta name="Description"
+          content="Lista wpisów z możliwością filtracji."/>
+    <meta name="Keywords" content="HTML FILTER"/>
+    <meta name="Author" content="Michał Ryś"/>
+    <title>HTML Filter</title>
+</head>
+<body>
+
+<header>
+    Lista makr i wspisów MR
+</header>
+
+<nav>
+    <div class="filterLabel">Filtrowanie po:
+        <input type="radio" class="keywords" id="radioKeywords" value="true" checked
+               onclick="radioButtonKeywordsUpdate()">słowach kluczowych
+        <input type="radio" class="descriptions" id="radioDescription" value="false"
+               onclick="radioButtonDescriptionUpdate()">opisach<br>
+    </div>
+    <textarea class=" filter" id="filterEntryId" name="filterEntryName" rows="3" onkeyup="filter()"></textarea>
+</nav>
+
+<article>
+    <div class="title"><a href="file://d:/test/" target="_blank">DVS Mesh</a></div>
+    <div class="dateAuthor">2022-06-01, M. Ryś</div>
+    <div class="keywords">DVS Mesh, hypermesh 12, mesh, odsuniecie dvs, siatka, siatkowanie</div>
+    <div class="description">
+        Jest to program do usprawnienia siatkowania dla połączeń spawanych pod wymagania DVS. Siatka jest z odsunięciem.
+        Są dwa poziomy odsunięcia, można je ustawić w pliku konfiguracyjnym. Domyślnie jest to 7mm i 6mm. Wybiera się
+        ścieżkę nodów, a następnie kierunel wyciągnięcia. Można potem wybrać także drugi kierunek wyciągnięcia - jest to
+        opcjonalne. Po uruchomieniu makra pojawią się komunikaty co zrobić.
+    </div>
+</article>
+
+<article>
+    <div class="title">UF Measurements</div>
+    <div class="dateAuthor">2022-06-12, M. Ryś</div>
+    <div class="keywords">UF Measurements, hyperview, measurements, wskazania, notki, UF, fatevas</div>
+    <div class="description">
+        Makro do robienia szybkich wskazań wyników z określonego zakresu dla wyników UF. Na przykład UF >= 1, 0.9 < UF
+        <= 1. Ma zdefioniowane trzy najczęsciej stosowane zakresy. Można aplikować do aktywnego okna jak również do
+        wszystkich. Wskazania na elemnety / na nody.
+    </div>
+</article>
+
+<footer>
+    Zrobione przez M.Ryś w dniu 18.06.2022r.
+</footer>
+
+<style>
+    html, body {
+        flex-direction: column;
+        font-family: Verdana;
+        background-image: linear-gradient(90deg, rgb(150, 150, 150), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(150, 150, 150));;
+        vertical-align: middle;
+        horiz-align: center;
+        text-align: center;
+        font-family: "Times New Roman";
+        font-size: 13pt;
+    }
+
+    header {
+        background-image: linear-gradient(90deg, rgb(150, 150, 150), rgb(255, 255, 255), rgb(200, 200, 200), rgb(255, 255, 255), rgb(150, 150, 150));
+        font-family: Verdana;
+        font-weight: bold;
+        text-align: center;
+        padding-top: 10pt;
+        padding-bottom: 10pt;
+        margin-top: -10pt;
+        margin-bottom: -5px;
+    }
+
+    footer {
+        margin-top: 50pt;
+        padding-top: 10pt;
+        padding-bottom: 200pt;
+        background-image: linear-gradient(90deg, rgb(150, 150, 150), rgb(255, 255, 255), rgb(200, 200, 200), rgb(255, 255, 255), rgb(150, 150, 150));
+        color: rgb(105, 87, 87);
+    }
+
+    div.filterLabel {
+        text-align: left;
+        margin-left: 10%;
+        color: rgb(105, 87, 87);
+        font-family: Verdana;
+        font-size: 10pt;
+        margin-top: 1pt;
+        margin-bottom: 1pt;
+    }
+
+    textarea.filter {
+        width: 80%;
+        margin-bottom: 10pt;
+        color: black;
+        font-size: 14pt;
+        font-family: Consolas;
+        resize: none;
+        border-style: solid;
+        border-width: 2px;
+    }
+
+    article {
+        margin-bottom: 15pt;
+        margin-left: 9.5%;
+        margin-right: 9.5%;
+        /*background: rgb(135, 210, 135);*/
+        background: rgb(255, 255, 255);
+        border: rgb(200, 200, 200);
+        border-style: dashed;
+        border-width: 2px;
+    }
+
+    a:link {
+        color: rgb(14, 49, 173);
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: #031146;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #006fff;
+        background-color: transparent;
+        text-decoration: underline;
+    }
+
+    a:active {
+        color: #4ec000;
+        background-color: transparent;
+        text-decoration: underline;
+    }
+
+    div.title {
+        text-align: left;
+        font-weight: bold;
+        padding-top: 10pt;
+        padding-left: 10pt;
+        padding-right: 10pt;
+    }
+
+    div.dateAuthor {
+        color: rgb(105, 87, 87);
+        text-align: left;
+        padding-left: 10pt;
+        padding-right: 10pt;
+        font-size: 10pt;
+    }
+
+    div.keywords {
+        color: rgb(105, 87, 87);
+        text-align: left;
+        font-size: 10pt;
+        padding-left: 10pt;
+        padding-right: 10pt;
+    }
+
+    div.description {
+        text-align: left;
+        padding-top: 5pt;
+        padding-left: 10pt;
+        padding-right: 10pt;
+        padding-bottom: 10pt;
+    }
+
+
+</style>
+
+<script>
+    function filter() {
+        let filter = document.querySelector("textarea.filter");
+        var textContent = filter.value;
+        var wordsFromFilter = textContent.toLowerCase().split(" ");
+        var articles = document.querySelectorAll("article");
+
+        var radioKeywords = document.querySelector("input.keywords");
+
+        if (radioKeywords.checked) {
+            for (let i = 0; i < articles.length; i++) {
+                var article = articles[i];
+                var keywords = article.querySelector("div.keywords");
+                let words = keywords.innerText.toLowerCase();
+
+                article.style.display = "inherit";
+                for (let j = 0; j < wordsFromFilter.length; j++) {
+                    let wordFromFilter = wordsFromFilter[j];
+                    if (!words.includes(wordFromFilter.replaceAll("\n", ""))) {
+                        article.style.display = "none";
+                        break;
+                    }
+                }
+            }
+        } else {
+            for (let i = 0; i < articles.length; i++) {
+                var article = articles[i];
+                var description = article.querySelector("div.description");
+                let words = description.innerText.toLowerCase();
+
+                article.style.display = "inherit";
+                for (let j = 0; j < wordsFromFilter.length; j++) {
+                    let wordFromFilter = wordsFromFilter[j];
+                    if (!words.includes(wordFromFilter.replaceAll("\n", ""))) {
+                        article.style.display = "none";
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    function radioButtonKeywordsUpdate() {
+        var radioKeywords = document.querySelector("input.keywords");
+        var radioDescriptions = document.querySelector("input.descriptions");
+
+        if (radioDescriptions.checked) {
+            radioKeywords.checked = true;
+            radioDescriptions.checked = false;
+            filter();
+        } else {
+            radioKeywords.checked = false;
+            radioDescriptions.checked = true;
+            filter();
+        }
+    }
+
+    function radioButtonDescriptionUpdate() {
+        var radioKeywords = document.querySelector("input.keywords");
+        var radioDescriptions = document.querySelector("input.descriptions");
+
+        if (radioKeywords.checked) {
+            radioKeywords.checked = false;
+            radioDescriptions.checked = true;
+            filter();
+        } else {
+            radioKeywords.checked = true;
+            radioDescriptions.checked = false;
+            filter();
+        }
+    }
+</script>
+
+</body>
+</html>
