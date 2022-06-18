@@ -12,24 +12,36 @@
 <body>
 
 <header>
-    Lista makr i wspisów MR.
+    Lista makr i wspisów MR
 </header>
 
 <nav>
-    <form>
-        <label class="filter" for="filterEntryId">Filtrowanie</label><br>
-        <input class="filter" type="text" id="filterEntryId" name="filterEntryName"><br>
-    </form>
+    <div class="filterLabel">Filtrowanie</div>
+    <textarea class="filter" id="filterEntryId" name="filterEntryName" rows="3">
+    </textarea>
 </nav>
 
 <article>
-    <h1>Super makro 1</h1>
-    <h2>2022-06-01, M. Ryś</h2>
-    <h3>hypermesh 12, mesh, odsuniecie dvs, siatka, siatkowanie</h3>
-    Jest to program do usprawnienia siatkowania dla połączeń spawanych pod wymagania DVS. Siatka jest z odsunięciem. Są
-    dwa poziomy odsunięcia, można je ustawić w pliku konfiguracyjnym. Domyślnie jest to 7mm i 6mm. Wybiera się ścieżkę
-    nodów, a następnie kierunel wyciągnięcia. Można potem wybrać także drugi kierunek wyciągnięcia - jest to opcjonalne.
-    Po uruchomieniu makra pojawią się komunikaty co zrobić.
+    <div class="title">DVS Mesh</div>
+    <div class="dateAuthor">2022-06-01, M. Ryś</div>
+    <div class="keywords">hypermesh 12, mesh, odsuniecie dvs, siatka, siatkowanie</div>
+    <div class="description">
+        Jest to program do usprawnienia siatkowania dla połączeń spawanych pod wymagania DVS. Siatka jest z odsunięciem.
+        Są dwa poziomy odsunięcia, można je ustawić w pliku konfiguracyjnym. Domyślnie jest to 7mm i 6mm. Wybiera się
+        ścieżkę nodów, a następnie kierunel wyciągnięcia. Można potem wybrać także drugi kierunek wyciągnięcia - jest to
+        opcjonalne. Po uruchomieniu makra pojawią się komunikaty co zrobić.
+    </div>
+</article>
+
+<article>
+    <div class="title">UF Measurements</div>
+    <div class="dateAuthor">2022-06-12, M. Ryś</div>
+    <div class="keywords">hyperview, measurements, wskazania, notki, UF, fatevas</div>
+    <div class="description">
+        Makro do robienia szybkich wskazań wyników z określonego zakresu dla wyników UF. Na przykład UF >= 1, 0.9 < UF
+        <= 1. Ma zdefioniowane trzy najczęsciej stosowane zakresy. Można aplikować do aktywnego okna jak również do
+        wszystkich. Wskazania na elemnety / na nody.
+    </div>
 </article>
 
 <footer>
@@ -40,31 +52,95 @@
     html, body {
         flex-direction: column;
         font-family: Verdana;
-        background-image: linear-gradient(90deg, rgb(59, 56, 53), rgb(245, 149, 77),
-        rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255),
-        rgb(245, 149, 77), rgb(59, 56, 53));;
+        background-image: linear-gradient(90deg, rgb(150, 150, 150), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(150, 150, 150));;
         vertical-align: middle;
         horiz-align: center;
         text-align: center;
-    }
-    header {
-        text-align: left;
-        margin-left: 10%;
+        font-family: "Times New Roman";
+        font-size: 13pt;
     }
 
-    label.filter {
+    header {
+        background-image: linear-gradient(90deg, rgb(150, 150, 150), rgb(255, 255, 255), rgb(200, 200, 200), rgb(255, 255, 255), rgb(150, 150, 150));
+        font-family: Verdana;
+        font-weight: bold;
+        text-align: center;
+        padding-top: 10pt;
+        padding-bottom: 10pt;
+        margin-top: -10pt;
+        margin-bottom: -5px;
+    }
+
+    footer {
+        margin-top: 50pt;
+        padding-top: 10pt;
+        padding-bottom: 200pt;
+        background-image: linear-gradient(90deg, rgb(150, 150, 150), rgb(255, 255, 255), rgb(200, 200, 200), rgb(255, 255, 255), rgb(150, 150, 150));
+        color: rgb(105, 87, 87);
+    }
+
+    div.filterLabel {
+        text-align: left;
+        margin-left: 10%;
         color: rgb(105, 87, 87);
         font-family: Verdana;
         font-size: 10pt;
-        margin-top: 20pt;
-        margin-bottom: 20pt;
+        margin-top: 1pt;
+        margin-bottom: 1pt;
     }
 
-    input.filter{
+    textarea.filter {
         width: 80%;
-        height: 40px;
+        margin-bottom: 10pt;
         color: black;
+        font-size: 14pt;
         font-family: Consolas;
+        resize: none;
+        border-style: solid;
+        border-width: 2px;
+    }
+
+    article {
+        margin-bottom: 15pt;
+        margin-left: 9.5%;
+        margin-right: 9.5%;
+        /*background: rgb(135, 210, 135);*/
+        background: rgb(255, 255, 255);
+        border: rgb(200, 200, 200);
+        border-style: dashed;
+        border-width: 2px;
+    }
+
+    div.title {
+        text-align: left;
+        font-weight: bold;
+        padding-top: 10pt;
+        padding-left: 10pt;
+        padding-right: 10pt;
+    }
+
+    div.dateAuthor {
+        color: rgb(105, 87, 87);
+        text-align: left;
+        padding-left: 10pt;
+        padding-right: 10pt;
+        font-size: 10pt;
+    }
+
+    div.keywords {
+        color: rgb(105, 87, 87);
+        text-align: left;
+        font-size: 10pt;
+        padding-left: 10pt;
+        padding-right: 10pt;
+    }
+
+    div.description {
+        text-align: left;
+        padding-top: 5pt;
+        padding-left: 10pt;
+        padding-right: 10pt;
+        padding-bottom: 10pt;
     }
 
 
