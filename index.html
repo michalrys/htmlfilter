@@ -16,13 +16,15 @@
 </header>
 
 <nav>
-    <div class="filterLabel">Filtrowanie</div>
-    <textarea class="filter" id="filterEntryId" name="filterEntryName" rows="3">
-    </textarea>
+    <div class="filterLabel">Filtrowanie po:
+        <input type="radio" id="radioKeywords" value="true" checked>słowach kluczowych
+        <input type="radio" id="radioDescription" value="false">opisach<br>
+    </div>
+    <textarea class="filter" id="filterEntryId" name="filterEntryName" rows="3"></textarea>
 </nav>
 
 <article>
-    <div class="title">DVS Mesh</div>
+    <div class="title"><a href="file://d:/test/" target="_blank">DVS Mesh</a></div>
     <div class="dateAuthor">2022-06-01, M. Ryś</div>
     <div class="keywords">hypermesh 12, mesh, odsuniecie dvs, siatka, siatkowanie</div>
     <div class="description">
@@ -109,6 +111,30 @@
         border: rgb(200, 200, 200);
         border-style: dashed;
         border-width: 2px;
+    }
+
+    a:link {
+        color: rgb(14, 49, 173);
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: #031146;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #006fff;
+        background-color: transparent;
+        text-decoration: underline;
+    }
+
+    a:active {
+        color: #4ec000;
+        background-color: transparent;
+        text-decoration: underline;
     }
 
     div.title {
