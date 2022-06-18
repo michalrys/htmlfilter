@@ -20,13 +20,13 @@
         <input type="radio" id="radioKeywords" value="true" checked>słowach kluczowych
         <input type="radio" id="radioDescription" value="false">opisach<br>
     </div>
-    <textarea class="filter" id="filterEntryId" name="filterEntryName" rows="3"></textarea>
+    <textarea class="filter" id="filterEntryId" name="filterEntryName" rows="3" onkeyup="filterByHeaders()"></textarea>
 </nav>
 
 <article>
     <div class="title"><a href="file://d:/test/" target="_blank">DVS Mesh</a></div>
     <div class="dateAuthor">2022-06-01, M. Ryś</div>
-    <div class="keywords">hypermesh 12, mesh, odsuniecie dvs, siatka, siatkowanie</div>
+    <div class="keywords">dvs Mesh, hypermesh 12, mesh, odsuniecie dvs, siatka, siatkowanie</div>
     <div class="description">
         Jest to program do usprawnienia siatkowania dla połączeń spawanych pod wymagania DVS. Siatka jest z odsunięciem.
         Są dwa poziomy odsunięcia, można je ustawić w pliku konfiguracyjnym. Domyślnie jest to 7mm i 6mm. Wybiera się
@@ -38,7 +38,7 @@
 <article>
     <div class="title">UF Measurements</div>
     <div class="dateAuthor">2022-06-12, M. Ryś</div>
-    <div class="keywords">hyperview, measurements, wskazania, notki, UF, fatevas</div>
+    <div class="keywords">uf measurements, hyperview, measurements, wskazania, notki, uf, fatevas</div>
     <div class="description">
         Makro do robienia szybkich wskazań wyników z określonego zakresu dla wyników UF. Na przykład UF >= 1, 0.9 < UF
         <= 1. Ma zdefioniowane trzy najczęsciej stosowane zakresy. Można aplikować do aktywnego okna jak również do
@@ -173,6 +173,45 @@
 </style>
 
 <script>
+    function filterByHeaders() {
+        let filter = document.querySelector("textarea.filter");
+        var textContent = filter.value;
+        console.log("text= " + textContent);
+
+        var articles = document.querySelectorAll("article");;
+
+
+        for (let i = 0; i < articles.length; i++) {
+            var article = articles[i];
+            var keywords = article.querySelector("div.keywords");
+            let words = keywords.innerText
+
+            console.log(!words.includes(textContent))
+
+            if (!words.includes(textContent)) {
+                article.style.display = "none";
+            } else {
+                article.style.display = "inherit";
+            }
+
+        }
+
+        //
+        // if (currentText === "START") {
+        //     button.innerText = "STOP";
+        //     button.style.background = "rgb(255, 0, 0)";
+        //     button.style.borderColor = "rgb(255, 0, 0)";
+        //     setAmountOfClicksIfPossible();
+        //     relaxMeterRun();
+        //     startClock();
+        //     resetStatistics();
+        // } else {
+        //     button.innerText = "START";
+        //     button.style.background = "rgb(66, 255, 12)";
+        //     button.style.borderColor = "rgb(66, 255, 12)";
+        //     relaxMeterStop();
+        // }
+    }
     // some js code
 </script>
 
