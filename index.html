@@ -17,9 +17,10 @@
 
 <nav>
     <div class="filterLabel">Filtrowanie po:
-        <input type="radio" class="keywords" id="radioKeywords" value="true" checked onclick="radioButtonsUpdate()">słowach
-        kluczowych
-        <input type="radio" class="descriptions" id="radioDescription" value="false" onclick="radioButtonsUpdate()">opisach<br>
+        <input type="radio" class="keywords" id="radioKeywords" value="true" checked
+               onclick="radioButtonKeywordsUpdate()">słowach kluczowych
+        <input type="radio" class="descriptions" id="radioDescription" value="false"
+               onclick="radioButtonDescriptionUpdate()">opisach<br>
     </div>
     <textarea class=" filter" id="filterEntryId" name="filterEntryName" rows="3" onkeyup="filter()"></textarea>
 </nav>
@@ -215,7 +216,22 @@
         }
     }
 
-    function radioButtonsUpdate() {
+    function radioButtonKeywordsUpdate() {
+        var radioKeywords = document.querySelector("input.keywords");
+        var radioDescriptions = document.querySelector("input.descriptions");
+
+        if (radioDescriptions.checked) {
+            radioKeywords.checked = true;
+            radioDescriptions.checked = false;
+            filter();
+        } else {
+            radioKeywords.checked = false;
+            radioDescriptions.checked = true;
+            filter();
+        }
+    }
+
+    function radioButtonDescriptionUpdate() {
         var radioKeywords = document.querySelector("input.keywords");
         var radioDescriptions = document.querySelector("input.descriptions");
 
