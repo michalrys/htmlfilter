@@ -20,7 +20,12 @@
         <input type="radio" class="keywords" id="radioKeywords" value="true" checked
                onclick="radioButtonKeywordsUpdate()">słowach kluczowych
         <input type="radio" class="descriptions" id="radioDescription" value="false"
-               onclick="radioButtonDescriptionUpdate()">opisach<br>
+               onclick="radioButtonDescriptionUpdate()">opisach
+        &nbsp &nbsp &nbsp &nbsp &nbsp Wyświetl:
+        <input type="checkbox" class="showKeywords" checked onclick="showHideKeywords()"> słowa kluczowe
+        <input type="checkbox" class="showDate" checked onclick="showHideDate()"> data i autor
+        <input type="checkbox" class="showDescription" checked onclick="showHideDescription()"> opis
+        <br>
     </div>
     <textarea class=" filter" id="filterEntryId" name="filterEntryName" rows="3" onkeyup="filter()"></textarea>
 </nav>
@@ -244,6 +249,64 @@
             radioDescriptions.checked = false;
             filter();
         }
+    }
+
+    function showHideKeywords() {
+        var checkboxShowKeywords = document.querySelector("input.showKeywords");
+        var articles = document.querySelectorAll("article");
+
+        if (checkboxShowKeywords.checked) {
+            for (let i = 0; i < articles.length; i++) {
+                var article = articles[i];
+                var keywords = article.querySelector("div.keywords");
+                keywords.style.display = "inherit"
+            }
+        } else {
+            for (let i = 0; i < articles.length; i++) {
+                var article = articles[i];
+                var keywords = article.querySelector("div.keywords");
+                keywords.style.display = "none"
+            }
+        }
+    }
+
+    function showHideDate() {
+        var checkboxShowDate = document.querySelector("input.showDate");
+        var articles = document.querySelectorAll("article");
+
+        if (checkboxShowDate.checked) {
+            for (let i = 0; i < articles.length; i++) {
+                var article = articles[i];
+                var date = article.querySelector("div.dateAuthor");
+                date.style.display = "inherit"
+            }
+        } else {
+            for (let i = 0; i < articles.length; i++) {
+                var article = articles[i];
+                var date = article.querySelector("div.dateAuthor");
+                date.style.display = "none"
+            }
+        }
+    }
+
+    function showHideDescription() {
+        var checkboxShowDescription = document.querySelector("input.showDescription");
+        var articles = document.querySelectorAll("article");
+
+        if (checkboxShowDescription.checked) {
+            for (let i = 0; i < articles.length; i++) {
+                var article = articles[i];
+                var description = article.querySelector("div.description");
+                description.style.display = "inherit"
+            }
+        } else {
+            for (let i = 0; i < articles.length; i++) {
+                var article = articles[i];
+                var description = article.querySelector("div.description");
+                description.style.display = "none"
+            }
+        }
+
     }
 </script>
 
