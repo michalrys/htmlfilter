@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+    <meta name="Description"
+          content="Lista wpisów z możliwością filtracji."/>
+    <meta name="Keywords" content="HTML FILTER"/>
+    <meta name="Author" content="Michał Ryś"/>
+    <title>HTML Filter</title>
+</head>
+<body>
+
+<header>
+    Lista makr i wspisów MR.
+</header>
+
+<nav>
+    <form>
+        <label class="filter" for="filterEntryId">Filtrowanie</label><br>
+        <input class="filter" type="text" id="filterEntryId" name="filterEntryName"><br>
+    </form>
+</nav>
+
+<article>
+    <h1>Super makro 1</h1>
+    <h2>2022-06-01, M. Ryś</h2>
+    <h3>hypermesh 12, mesh, odsuniecie dvs, siatka, siatkowanie</h3>
+    Jest to program do usprawnienia siatkowania dla połączeń spawanych pod wymagania DVS. Siatka jest z odsunięciem. Są
+    dwa poziomy odsunięcia, można je ustawić w pliku konfiguracyjnym. Domyślnie jest to 7mm i 6mm. Wybiera się ścieżkę
+    nodów, a następnie kierunel wyciągnięcia. Można potem wybrać także drugi kierunek wyciągnięcia - jest to opcjonalne.
+    Po uruchomieniu makra pojawią się komunikaty co zrobić.
+</article>
+
+<footer>
+    Zrobione przez M.Ryś w dniu 18.06.2022r.
+</footer>
+
+<style>
+    html, body {
+        flex-direction: column;
+        font-family: Verdana;
+        background-image: linear-gradient(90deg, rgb(59, 56, 53), rgb(245, 149, 77),
+        rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255),
+        rgb(245, 149, 77), rgb(59, 56, 53));;
+        vertical-align: middle;
+        horiz-align: center;
+        text-align: center;
+    }
+    header {
+        text-align: left;
+        margin-left: 10%;
+    }
+
+    label.filter {
+        color: rgb(105, 87, 87);
+        font-family: Verdana;
+        font-size: 10pt;
+        margin-top: 20pt;
+        margin-bottom: 20pt;
+    }
+
+    input.filter{
+        width: 80%;
+        height: 40px;
+        color: black;
+        font-family: Consolas;
+    }
+
+
+</style>
+
+<script>
+    // some js code
+</script>
+
+</body>
+</html>
