@@ -17,9 +17,10 @@
 
 <nav>
     <div class="filterLabel">Filtrowanie po:
-        <input type="radio" class="keywords" id="radioKeywords" value="true" checked
-               onclick="radioButtonKeywordsUpdate()">słowach kluczowych
-        <input type="radio" class="descriptions" id="radioDescription" value="false"
+        <input type="radio" class="keywords" id="radioKeywords" value="false"
+               onclick="radioButtonKeywordsUpdate()">słowach
+        kluczowych
+        <input type="radio" class="descriptions" id="radioDescription" value="true" checked
                onclick="radioButtonDescriptionUpdate()">opisach
         &nbsp &nbsp &nbsp &nbsp &nbsp Wyświetl:
         <input type="checkbox" class="showKeywords" checked onclick="showHideKeywords()"> słowa kluczowe
@@ -31,7 +32,10 @@
 </nav>
 
 <article>
-    <div class="title"><a href="file://d:/test/" target="_blank">DVS Mesh</a></div>
+    <div class="titleLine">
+        <div class="title"><a href="file://d:/test/" target="_blank">DVS Mesh</a></div>
+        <div class="descriptionShowHide" onclick="showHideSingleDescription('DVS Mesh')">-</div>
+    </div>
     <div class="dateAuthor">2022-06-01, M. Ryś</div>
     <div class="keywords">DVS Mesh, hypermesh 12, mesh, odsuniecie dvs, siatka, siatkowanie</div>
     <div class="description">
@@ -46,7 +50,10 @@
 </article>
 
 <article>
-    <div class="title">UF Measurements</div>
+    <div class="titleLine">
+        <div class="title"><a href="file://d:/test/" target="_blank">UF Measurements</a></div>
+        <div class="descriptionShowHide" onclick="showHideSingleDescription('UF Measurements')">-</div>
+    </div>
     <div class="dateAuthor">2022-06-12, M. Ryś</div>
     <div class="keywords">UF Measurements, hyperview, measurements, wskazania, notki, UF, fatevas</div>
     <div class="description">
@@ -147,12 +154,35 @@
         text-decoration: underline;
     }
 
+    div.titleLine {
+        text-align: left;
+    }
+
     div.title {
+        display: inline-block;
         text-align: left;
         font-weight: bold;
         padding-top: 10pt;
         padding-left: 10pt;
         padding-right: 10pt;
+    }
+
+    div.descriptionShowHide {
+        display: inline-block;
+        text-align: left;
+        background: rgb(250, 250, 250);
+        background: rgb(230, 230, 230);
+        color: rgb(160, 160, 160);
+        font-family: "Arial Black";
+        font-weight: bold;
+        font-size: 12pt;
+        padding-top: 0pt;
+        padding-left: 10pt;
+        padding-right: 10pt;
+        padding-bottom: 0pt;
+        margin-left: 20pt;
+        margin-bottom: -10pt;
+        cursor: pointer;
     }
 
     div.dateAuthor {
@@ -183,6 +213,9 @@
 </style>
 
 <script>
+    const SHOW_DESCRIPTION_LABEL = "+";
+    const HIDE_DESCRIPTION_LABEL = "-";
+
     function filter() {
         let filter = document.querySelector("textarea.filter");
         var textContent = filter.value;
@@ -301,15 +334,51 @@
                 var article = articles[i];
                 var description = article.querySelector("div.description");
                 description.style.display = "inherit"
+
+                var showHideDiv = article.querySelector("div.descriptionShowHide");
+                showHideDiv.innerText = HIDE_DESCRIPTION_LABEL;
             }
         } else {
             for (let i = 0; i < articles.length; i++) {
                 var article = articles[i];
                 var description = article.querySelector("div.description");
                 description.style.display = "none"
+
+                var showHideDiv = article.querySelector("div.descriptionShowHide");
+                showHideDiv.innerText = SHOW_DESCRIPTION_LABEL;
             }
         }
     }
+
+    function showHideSingleDescription(titleName) {
+        var articles = document.querySelectorAll("article");
+
+        if (articles.length <= 0) {
+            return;
+        }
+
+        for (let i = 0; i < articles.length; i++) {
+            var article = articles[i];
+            var title = article.querySelector("div.title");
+            var titleInnerTxt = title.querySelector("a").innerText;
+            if (titleInnerTxt === titleName) {
+                var showHideDiv = article.querySelector("div.descriptionShowHide");
+                var showHideStatus = showHideDiv.innerText;
+
+                if (showHideStatus === HIDE_DESCRIPTION_LABEL) {
+                    showHideDiv.innerText = SHOW_DESCRIPTION_LABEL;
+                    var description = article.querySelector("div.description");
+                    description.style.display = "none";
+                } else {
+                    showHideDiv.innerText = HIDE_DESCRIPTION_LABEL;
+                    var description = article.querySelector("div.description");
+                    description.style.display = "inherit";
+                }
+                return;
+            }
+        }
+    }
+
 </script>
 
 </body>
