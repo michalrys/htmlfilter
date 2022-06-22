@@ -9,7 +9,7 @@
     <meta name="Author" content="Michał Ryś"/>
     <title>HTML Filter</title>
 </head>
-<body>
+<body onload="filter()">
 
 <header>
     Lista makr i wspisów MR
@@ -215,6 +215,7 @@
 <script>
     const SHOW_DESCRIPTION_LABEL = "+";
     const HIDE_DESCRIPTION_LABEL = "-";
+    const DEFAULT_HEADER = "Lista makr i wspisów MR";
 
     function filter() {
         let filter = document.querySelector("textarea.filter");
@@ -224,6 +225,7 @@
 
         var radioKeywords = document.querySelector("input.keywords");
 
+        var howManyArticlesAreDisplayed = 0;
         if (radioKeywords.checked) {
             for (let i = 0; i < articles.length; i++) {
                 var article = articles[i];
@@ -231,10 +233,12 @@
                 let words = keywords.innerText.toLowerCase();
 
                 article.style.display = "inherit";
+                howManyArticlesAreDisplayed++;
                 for (let j = 0; j < wordsFromFilter.length; j++) {
                     let wordFromFilter = wordsFromFilter[j];
                     if (!words.includes(wordFromFilter.replaceAll("\n", ""))) {
                         article.style.display = "none";
+                        howManyArticlesAreDisplayed--;
                         break;
                     }
                 }
@@ -246,15 +250,18 @@
                 let words = description.innerText.toLowerCase();
 
                 article.style.display = "inherit";
+                howManyArticlesAreDisplayed++;
                 for (let j = 0; j < wordsFromFilter.length; j++) {
                     let wordFromFilter = wordsFromFilter[j];
                     if (!words.includes(wordFromFilter.replaceAll("\n", ""))) {
                         article.style.display = "none";
+                        howManyArticlesAreDisplayed--;
                         break;
                     }
                 }
             }
         }
+        document.querySelector("header").innerText = DEFAULT_HEADER + " (" + howManyArticlesAreDisplayed + ")";
     }
 
     function radioButtonKeywordsUpdate() {
